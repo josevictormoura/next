@@ -1,7 +1,12 @@
+'use client'
+
 import Link from 'next/link';
 import React from 'react';
-
+import { useAuth } from '@/app/context';
 const Header = () => {
+
+  const {isLoggedIn} = useAuth();
+
   return (
     <header className="p-5 flex justify-between w-full border-b-1 border-white">
       <div>
@@ -24,7 +29,7 @@ const Header = () => {
             <Link href="/produtos">Produtos</Link>
           </li>
           <li>
-            <Link href="/sair">Sair</Link>
+            <Link href="/sair">{isLoggedIn ? 'Sair' : 'Login'}</Link>
           </li>
         </ul>
       </nav>
